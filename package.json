@@ -1,0 +1,61 @@
+{
+  "name": "vue-player",
+  "version": "0.10.1",
+  "description": "vue-player",
+  "main": "src/index.js",
+  "homepage": "https://yinfo.github.io/vue-player",
+  "scripts": {
+    "build": "npm run prod",
+    "deploy": "gh-pages -d docs",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development --host 0.0.0.0",
+    "serve-dev": "npm run dev && nodemon ./src/server/server.js",
+    "serve-prod": "npm run prod && node ./src/server/server.js",
+    "predeploy": "npm run prod",
+
+    "deploy_del": "gh-pages -d build",
+    "flow": "node_modules/.bin/flow",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "clean-docs": "rimraf docs/*",
+    "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
+    "predev": "npm run clean-docs",
+    "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
+    "preprod": "npm run clean-docs",
+    "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
+    "prestart": "npm run clean-docs && npm run prepare:index-html"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0",
+    "yarn": ">=1.3.0"
+  },
+  "keywords": [
+    "director"
+  ],
+  "author": "Erwan DATIN (MacKentoch)",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/src/test",
+      "<rootDir>/src/test/__mocks__"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/test/setupTests.js",
+      "<rootDir>/src/test/__mocks__/localStorage.js",
+      "<rootDir>/src/test/__mocks__/sessionStorage.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/__mocks__/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    },
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "devDependencies": {
+  }
+}
