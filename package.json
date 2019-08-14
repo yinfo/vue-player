@@ -11,7 +11,6 @@
     "serve-dev": "npm run dev && nodemon ./src/server/server.js",
     "serve-prod": "npm run prod && node ./src/server/server.js",
     "predeploy": "npm run prod",
-
     "deploy_del": "gh-pages -d build",
     "flow": "node_modules/.bin/flow",
     "test": "cross-env NODE_ENV=test jest",
@@ -36,8 +35,7 @@
   ],
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "jest": {
     "roots": [
       "<rootDir>/src/",
@@ -57,5 +55,6 @@
     "collectCoverage": true
   },
   "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
