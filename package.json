@@ -2,7 +2,7 @@
   "name": "vue-player",
   "version": "0.10.1",
   "description": "vue-player",
-  "main": "docs/index.html",
+  "main": "./index.html",
   "homepage": "https://yinfo.github.io/vue-player",
   "scripts": {
     "build": "npm run prod",
